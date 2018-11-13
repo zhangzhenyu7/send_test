@@ -52,8 +52,9 @@ void MainWindow::sendMsg(QString str){
 
 void MainWindow::on_comboBox_currentIndexChanged(const QString &arg1)
 {
-    m_sock.destroyed();
-    m_sock.bind(QHostAddress(ui->comboBox->currentText()),0);
+    m_sock.close();
+    //qDebug()<<ui->comboBox->currentText();
+    qDebug()<<"err"<<m_sock.bind(QHostAddress(ui->comboBox->currentText()),0);
     m_sock.setSocketOption(QAbstractSocket::MulticastLoopbackOption,1);
 }
 
